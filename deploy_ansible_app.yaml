@@ -1,6 +1,6 @@
 ---
 - name: Deploy Node.js App
-  hosts: 102.37.219.3
+  hosts: azure_servers
   become: true
   tasks:
     - name: Update apt cache and install Node.js
@@ -21,12 +21,8 @@
         chdir: /home/azureuser/my-nodejs-app  # Update with your actual path
       register: npm_install
 
-    - debug:
-        msg: "npm install failed. See error output"
-        when: npm_install.failed
-
     - name: Start Node.js application
       command: npm start
       args:
         chdir: /home/azureuser/my-nodejs-app  # Update with your actual path
-      when: npm_install.rc == 0
+
