@@ -1,0 +1,32 @@
+---
+- name: Deploy Node.js App
+  hosts: 102.37.219.3
+  become: true
+  tasks:
+    - name: Update apt cache and install Node.js
+      apt:
+        name:
+          - nodejs
+          - npm
+        state: present
+
+    - name: Clone or copy Node.js application code
+      git:
+        repo: https://github.com/Chiraz32/nodejs-app.git
+        dest: /home/azureuser/my-nodejs-app # Update with your actual path
+
+    - name: Install Node.js dependencies
+      command: npm install
+      args:
+        chdir: /home/azureuser/my-nodejs-app  # Update with your actual path
+      register: npm_install
+
+    - debug:
+        msg: "npm install failed. See error output"
+        when: npm_install.failed
+
+    - name: Start Node.js application
+      command: npm start
+      args:
+        chdir: /home/azureuser/my-nodejs-app  # Update with your actual path
+      when: npm_install.rc == 0
