@@ -43,7 +43,10 @@ app.post('/store-goal', (req, res) => {
   res.redirect('/');
 });
 
+
+// Listen on all network interfaces
 const PORT = 8084;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+const HOST = '0.0.0.0';  // This binds to all available network interfaces
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running on ${HOST}:${PORT}`);
 });
