@@ -14,6 +14,7 @@
       git:
         repo: https://github.com/Chiraz32/nodejs-app.git
         dest: /home/azureuser/my-nodejs-app # Update with your actual path
+        force: yes
 
     - name: Install Node.js dependencies
       command: npm install
