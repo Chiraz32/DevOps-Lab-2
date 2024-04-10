@@ -43,6 +43,7 @@ app.post('/store-goal', (req, res) => {
   res.redirect('/');
 });
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+const PORT = 8084;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
