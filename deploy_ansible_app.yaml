@@ -23,7 +23,7 @@
       register: npm_install
 
     - name: Start Node.js application
-      command: npm start
+      command: npm run start
       args:
         chdir: /home/azureuser/my-nodejs-app  # Update with your actual path
 
