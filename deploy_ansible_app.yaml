@@ -13,18 +13,21 @@
     - name: Clone or copy Node.js application code
       git:
         repo: https://github.com/Chiraz32/nodejs-app.git
-        dest: /home/azureuser/my-nodejs-app # Update with your actual path
+        dest: /home/azureuser/my-nodejs-app
         force: yes
 
     - name: Install Node.js dependencies
       command: npm install
       args:
-        chdir: /home/azureuser/my-nodejs-app  # Update with your actual path
+        chdir: /home/azureuser/my-nodejs-app
       register: npm_install
 
     - name: Start Node.js application
       command: npm run start
       become: true
       args:
-        chdir: /home/azureuser/my-nodejs-app  # Update with your actual path
+        chdir: /home/azureuser/my-nodejs-app
+      register: npm_start_output
 
+    - debug:
+        var: npm_start_output.stdout
