@@ -1,4 +1,4 @@
-## Mini DevOps Project
+## DevOps Mini-Project
 
 This repository contains a complete DevOps setup for deploying a Node.js application using Docker, Jenkins, Kubernetes, and Ansible.
 
